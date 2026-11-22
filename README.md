@@ -3,6 +3,7 @@
 Boggan wuxuu ururiyaa agabka cilmi-baarista, tixraacyada, qorista iyo falanqaynta xogta.
 
 Bogga tooska ah: https://maan1-1.github.io/NIBRAAS_Research_Tools/
+Isbeddel kasta oo laanta `main` lagu riixo si toos ah ayuu bogga u cusboonaysiinayaa.
 
 ## Daabacaadda
 
