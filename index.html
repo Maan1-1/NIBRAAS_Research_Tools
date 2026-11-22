@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="so"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NIBRAAS Research Tools</title>
+<style>
+:root{--navy:#142b4a;--teal:#168b83;--gold:#d6a94b;--ink:#203047;--muted:#65758b;--paper:#f5f7fa;--line:#e4eaf0}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 Arial,sans-serif}
+header{background:linear-gradient(120deg,#102744,#1b5362);color:white;padding:22px max(5vw,20px) 52px}
+nav{display:flex;justify-content:space-between;align-items:center;max-width:1180px;margin:auto}
+.brand{font-size:20px;font-weight:bold;display:flex;align-items:center;gap:12px}.logo{background:var(--gold);color:var(--navy);border-radius:12px;padding:7px 13px;font-size:23px}
+button{cursor:pointer;border:1px solid #ffffff70;background:#ffffff12;color:white;padding:9px 14px;border-radius:10px}
+.hero{max-width:1180px;margin:45px auto 0}.eyebrow{color:#f0d18b;font-weight:bold;font-size:12px;letter-spacing:1.5px}
+h1{font-size:clamp(32px,5vw,52px);line-height:1.15;margin:12px 0}.hero p{max-width:730px;color:#e1eaf0}
+.pills{display:flex;gap:9px;flex-wrap:wrap}.pill{border:1px solid #ffffff30;background:#ffffff18;border-radius:30px;padding:6px 12px;font-size:13px}
+main{max-width:1180px;margin:-24px auto 60px;padding:0 20px}.toolbar{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;display:flex;gap:12px;flex-wrap:wrap;box-shadow:0 8px 25px #152b4510}
+input,select{font:inherit;border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--ink);background:white}input{flex:1;min-width:220px}select{min-width:190px}
+.head{display:flex;justify-content:space-between;align-items:end;margin:35px 0 15px;gap:15px}h2{color:var(--navy);margin:0}.sub,.count{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:15px}
+.card{background:white;border:1px solid var(--line);border-radius:15px;padding:18px;display:flex;flex-direction:column;min-height:205px}
+.top{display:flex;justify-content:space-between;align-items:center}.icon{background:#e8f4f2;color:var(--teal);padding:7px 12px;border-radius:10px;font-weight:bold}.badge{background:#e8f4f2;color:#28756e;border-radius:20px;padding:4px 8px;font-size:11px}
+h3{font-size:17px;color:var(--navy);margin:13px 0 5px}.card p{font-size:13px;color:var(--muted);margin:0 0 14px;flex:1}
+.card a{background:var(--navy);color:white;text-decoration:none;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:bold;align-self:flex-start}.card a:hover{background:var(--teal)}
+.note{margin-top:28px;padding:18px;background:#fff9e9;border:1px solid #f1dfb6;border-radius:13px;color:#70551d;font-size:13px}
+.empty{display:none;background:white;padding:25px;text-align:center;border-radius:12px;color:var(--muted)}
+footer{background:#102744;color:#dce6ed;text-align:center;padding:28px;font-size:13px}footer strong{color:#f0d18b}
+[dir=rtl]body{text-align:right}@media(max-width:600px){.head{align-items:start;flex-direction:column}select{width:100%}}
+</style></head>
+<body><header><nav><div class="brand"><img src="nibraas-logo.jpg" alt="NIBRAAS logo" style="height:58px;width:auto;max-width:220px;object-fit:contain;border-radius:8px;background:white;padding:3px"><span>Research Tools</span></div><button id="lang">العربية</button></nav>
+<div class="hero"><div class="eyebrow" id="eyebrow">NIBRAAS • AALADAHA CILMI-BAARISTA</div>
+<h1 id="title">Aaladaha cilmi-baarista<br>oo hal meel kuugu diyaarsan.</h1>
+<p id="intro">Ka hel maktabado, raadinta daraasadaha, maaraynta tixraacyada, qorista, falanqaynta xogta iyo agab kale oo kaa caawinaya safarka cilmi-baarista.</p>
+<div class="pills"><span class="pill" id="p1">Maktabado dijitaal ah</span><span class="pill" id="p2">Qalabka tixraaca</span><span class="pill" id="p3">Qorista & xogta</span><span class="pill" id="p4">AI Research</span></div></div></header>
+<main><div class="toolbar"><input id="search" type="search" placeholder="Raadi aalad ama adeeg..."><select id="category"></select></div>
+<div class="head"><div><h2 id="listTitle">Aaladaha cilmi-baarista</h2><div class="sub" id="listSub">Dooro qaybta aad u baahan tahay, kadib fur aaladda.</div></div><span class="count" id="count"></span></div>
+<div class="grid" id="grid"></div><div class="empty" id="empty">Wax natiijo ah lama helin.</div>
+<div class="note" id="notice"><b>Ogeysiis muhiim ah:</b> Aaladaha waxaa loo kala saaray cilmiga shareecada iyo cilmiyada kale. Waxay caawinayaan raadinta iyo diyaarinta cilmi-baarista; ma beddelayaan akhriska iyo hubinta ilaha asalka ah. Qaar waa lacag ama waxay u baahan karaan akoon. AI-gu wuu khaldami karaa—xaqiiji tixraacyada iyo xogta. ZIP-ka Office waxaa lagu dari doonaa marka aad soo geliso.</div></main>
+<footer><strong>NIBRAAS | نبراس</strong><br><span id="foot">Adiga ayaa samaynaya, NIBRAAS ayaa ku hagaya.</span><br>© NIBRAAS Research Tools</footer>
+<script>
+const tools=[
+["مكتبة الشاملة — Maktaba Shaamila","sharia","Maktabad weyn oo kutubta culuumta shareecada Islaamka laga raadiyo.","https://shamela.ws/","Shareeco"],
+["المكتبة الوقفية — Al-Maktaba Al-Waqfeya","sharia","Kutubta shareecada, tafsiirka, xadiiska, fiqhiga iyo culuumta Islaamka.","https://waqfeya.net/","Shareeco"],
+["الدرر السنية — Dorar","sharia","Baadhista axaadiista, takhrijka, macluumaadka culimada iyo mawduucyada shareecada.","https://dorar.net/","Xadiis & Shareeco"],
+["Quran.com","sharia","Qur'aanka Kariimka ah: akhris, tarjumaad iyo raadinta aayadaha.","https://quran.com/","Qur'aan"],
+["Tanzil","sharia","Qoraalka Qur'aanka iyo agab la xiriira qoraalka mushafka.","https://tanzil.net/","Qur'aan"],
+["موسوعة الحديث — Hadith Encyclopedia","sharia","Raadi axaadiis iyo xogtooda; xaqiiji darajada xadiiska iyo isha asalka ah.","https://hadeethenc.com/","Xadiis"],
+["Islamweb","sharia","Maqaallo, fatwooyin iyo agab diini ah; fatwada ku celi culimo lagu kalsoon yahay.","https://www.islamweb.net/","Culuumta Islaamka"],
+["الباحث القرآني — Quranic Research","sharia","Raadinta iyo daraasaynta aayadaha iyo tafsiirrada Qur'aanka.","https://tafsir.app/","Tafsiir"],
+["Google Scholar","general","Raadi maqaalada cilmiyeed, buugaagta, theses iyo tixraacyada culuum kala duwan.","https://scholar.google.com/","Raadin"],
+["Semantic Scholar","general","Raadin cilmiyeed iyo xiriirrada maqaalada cilmiyeed ee maadooyin kala duwan.","https://www.semanticscholar.org/","Raadin"],
+["OpenAlex","general","Xog furan oo ku saabsan cilmi-baarista, qorayaasha, joornaallada iyo hay'adaha.","https://openalex.org/","Xog cilmiyeed"],
+["CORE","general","Raadi qoraallo cilmiyeed oo open access ah iyo kaydad jaamacadeed.","https://core.ac.uk/","Ilaha furan"],
+["BASE","general","Mashiin raadis aqooneed oo uruuriya agab cilmiyeed.","https://www.base-search.net/","Raadin"],
+["Crossref","general","Hubi xogta daabacaadda, qorayaasha iyo DOI-yada maqaalada.","https://search.crossref.org/","DOI"],
+["PubMed","general","Raadi cilmi-baarista caafimaadka iyo cilmiga nolosha.","https://pubmed.ncbi.nlm.nih.gov/","Caafimaad"],
+["ERIC","general","Kayd cilmiyeed ku takhasusay waxbarashada.","https://eric.ed.gov/","Waxbarasho"],
+["Internet Archive","general","Ururin dijitaal ah oo buugaag, qoraallo iyo agab taariikheed laga raadin karo.","https://archive.org/","Maktabad"],
+["Google Books","general","Raadi buugaag, xogta daabacaadda iyo qaybo buugaag ah.","https://books.google.com/","Buugaag"],
+["WorldCat","general","Ka raadi buugaag iyo agab ku jira maktabadaha adduunka.","https://www.worldcat.org/","Maktabad"],
+["DOAJ","general","Ka raadi joornaallo iyo maqaalada si furan loo heli karo.","https://doaj.org/","Open Access"],
+["PubMed Central","general","Kayd bilaash ah oo qoraallada buuxa ee caafimaadka iyo cilmiga nolosha ah.","https://pmc.ncbi.nlm.nih.gov/","Open Access"],
+["arXiv","general","Qoraallo cilmiyeed hore, gaar ahaan xisaabta, physics iyo computer science.","https://arxiv.org/","Preprints"],
+["Zenodo","general","Kaydi oo hel natiijooyin cilmiyeed, xog, software iyo qoraallo.","https://zenodo.org/","Kayd"],
+["JSTOR","general","Maqaallo, buugaag iyo ilo cilmiyeed; qaar waxay u baahan yihiin rukhsad.","https://www.jstor.org/","Isku-dhaf"],
+["Zotero","references","Ururi, habeey oo geli tixraacyada iyo bibliography-ga cilmi-baarista.","https://www.zotero.org/","Tixraac"],
+["Mendeley","references","Maamul waraaqaha cilmiyeed, PDF-yada iyo tixraacyada.","https://www.mendeley.com/","Tixraac"],
+["ZoteroBib","references","Samee liiska tixraacyada adigoon rakibin barnaamij.","https://zbib.org/","Tixraac"],
+["ORCID","references","Samee aqoonsi cilmi-baare oo joogto ah.","https://orcid.org/","Aqoonsi"],
+["Unpaywall","references","Raadi nuqullo sharci ah oo open access ah oo maqaal cilmiyeed ah.","https://unpaywall.org/","Helitaan"],
+["Microsoft Word","writing","Qorista iyo habaynta qoraalka cilmi-baarista.","https://www.microsoft.com/microsoft-365/word","Qoris"],
+["Google Docs","writing","Qorista dukumentiyada iyo wada-shaqaynta online-ka.","https://docs.google.com/","Qoris"],
+["Overleaf","writing","Qorista dukumentiyada cilmiyeed iyadoo la adeegsanayo LaTeX.","https://www.overleaf.com/","Qoris"],
+["Grammarly","writing","Ka caawi hubinta naxwaha iyo hufnaanta qoraalka Ingiriisiga.","https://www.grammarly.com/","Luuqad"],
+["Purdue OWL","writing","Hagayaal ku saabsan qorista aqooneed iyo qaababka tixraaca.","https://owl.purdue.edu/","Hagaha"],
+["Google Sheets","data","Diyaari jadwallo oo samee falanqayn xog fudud.","https://sheets.google.com/","Xog"],
+["Microsoft Excel","data","Maamul xogta, samee jadwallo, xisaab iyo jaantusyo.","https://www.microsoft.com/microsoft-365/excel","Xog"],
+["Jamovi","data","Barnaamij bilaash ah oo sahla falanqaynta tirakoobka.","https://www.jamovi.org/","Statistics"],
+["JASP","data","Barnaamij bilaash ah oo loogu talagalay falanqaynta tirakoobka.","https://jasp-stats.org/","Statistics"],
+["R Project","data","Luqad iyo deegaan bilaash ah oo loogu talagalay falanqaynta tirakoobka.","https://www.r-project.org/","Statistics"],
+["Google Forms","data","Samee su'aalo-ururin online ah; ilaali oggolaanshaha ka qaybgalayaasha.","https://forms.google.com/","Su'aalo"],
+["Elicit","ai","AI ka caawiya raadinta suugaanta cilmiyeed; xaqiiji maqaal kasta.","https://elicit.com/","AI"],
+["Consensus","ai","Raadi jawaabo ku salaysan daraasado cilmiyeed; akhri daraasadaha asalka ah.","https://consensus.app/","AI"],
+["ResearchRabbit","ai","Soo hel xiriirrada maqaalada iyo shabakadaha cilmi-baarista.","https://www.researchrabbit.ai/","AI"],
+["Connected Papers","ai","Samee muuqaal xiriirka u dhexeeya waraaqaha cilmiyeed.","https://www.connectedpapers.com/","AI"],
+["SciSpace","ai","Ka caawi fahamka iyo akhrinta qoraallada cilmiyeed; hubi jawaabaha.","https://scispace.com/","AI"],
+["Rayyan","methods","Ka caawi kala shaandhaynta daraasadaha systematic review.","https://www.rayyan.ai/","Review"],
+["PRISMA","methods","Hagayaal iyo checklist loogu talagalay warbixinta systematic reviews.","https://www.prisma-statement.org/","Hagaha"],
+["EQUATOR Network","methods","Hagayaal lagu hagaajiyo warbixinta cilmi-baarista, gaar ahaan caafimaadka.","https://www.equator-network.org/","Hagaha"],
+["OSF","methods","Qorshee mashruuca, diiwaangeli habraaca, kuna wadaag agabka cilmi-baarista.","https://osf.io/","Mashruuc"],
+["Microsoft Office — Bogga rasmiga ah","software","Ka soo dejiso Office bogga rasmiga ah ee Microsoft adigoo isticmaalaya akoon leh rukhsad sax ah.","https://account.microsoft.com/services","Microsoft"]
+]
+const names={so:{all:"Dhammaan qaybaha",sharia:"Cilmiga Shareecada",general:"Cilmiyada kale",references:"Tixraacyo & aqoonsi",writing:"Qorista",data:"Xog & tirakoob",ai:"AI iyo raadinta",methods:"Habraac & dib-u-eegis",software:"Barnaamijyo"},ar:{all:"كل الأقسام",sharia:"العلوم الشرعية",general:"العلوم الأخرى",references:"المراجع والهوية",writing:"الكتابة الأكاديمية",data:"البيانات والإحصاء",ai:"الذكاء الاصطناعي",methods:"المنهجية والمراجعة",software:"البرامج"}};
+let lang="so";const $=x=>document.getElementById(x);
+function render(){let q=$("search").value.toLowerCase(),c=$("category").value;let a=tools.filter(t=>(c==="all"||t[1]===c)&&(!q||t.join(" ").toLowerCase().includes(q)));
+$("grid").innerHTML=a.map(t=>`<article class="card"><div class="top"><span class="icon">${t[0][0]}</span><span class="badge">${t[4]}</span></div><h3>${t[0]}</h3><p>${t[2]}</p><a href="${t[3]}" target="_blank" rel="noopener noreferrer">${t[1]==="software"?(lang==="so"?"Booqo bogga rasmiga ah ↗":"زيارة الموقع الرسمي ↗"):(lang==="so"?"Fur aaladda ↗":"افتح الأداة ↗")}</a></article>`).join("");
+$("count").textContent=lang==="so"?a.length+" aaladood":"عدد الأدوات: "+a.length;$("empty").style.display=a.length?"none":"block";}
+function setup(){ $("category").innerHTML=Object.entries(names[lang]).map(([k,v])=>`<option value="${k}">${v}</option>`).join("");
+$("lang").textContent=lang==="so"?"العربية":"Soomaali";document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+$("eyebrow").textContent=lang==="so"?"NIBRAAS • AALADAHA CILMI-BAARISTA":"نبراس • أدوات البحث العلمي";
+$("title").innerHTML=lang==="so"?"Aaladaha cilmi-baarista<br>oo hal meel kuugu diyaarsan.":"أدوات البحث العلمي<br>في مكان واحد.";
+$("intro").textContent=lang==="so"?"Ka hel maktabado, raadinta daraasadaha, maaraynta tixraacyada, qorista, falanqaynta xogta iyo agab kale oo kaa caawinaya safarka cilmi-baarista.":"اكتشف المكتبات ومحركات البحث وإدارة المراجع والكتابة وتحليل البيانات وأدوات أخرى تساعدك في رحلتك البحثية.";
+["p1","p2","p3","p4"].forEach((id,i)=>$(id).textContent=(lang==="so"?["Maktabado dijitaal ah","Qalabka tixraaca","Qorista & xogta","AI Research"]:["مكتبات رقمية","إدارة المراجع","الكتابة والبيانات","أدوات الذكاء الاصطناعي"])[i]);
+$("listTitle").textContent=lang==="so"?"Aaladaha cilmi-baarista":"أدوات البحث العلمي";$("listSub").textContent=lang==="so"?"Dooro qaybta aad u baahan tahay, kadib fur aaladda.":"اختر القسم الذي تحتاجه ثم افتح الأداة.";
+$("search").placeholder=lang==="so"?"Raadi aalad ama adeeg...":"ابحث عن أداة أو خدمة...";
+$("notice").innerHTML=lang==="so"?"<b>Ogeysiis muhiim ah:</b> Aaladaha waxaa loo kala saaray cilmiga shareecada iyo cilmiyada kale. Waxay caawinayaan raadinta iyo diyaarinta cilmi-baarista; ma beddelayaan akhriska iyo hubinta ilaha asalka ah. Qaar waa lacag ama waxay u baahan karaan akoon. AI-gu wuu khaldami karaa—xaqiiji tixraacyada iyo xogta. Office ka soo dejiso bogga rasmiga ah ee Microsoft adigoo adeegsanaya akoon leh rukhsad sax ah.":"<b>تنبيه مهم:</b> تساعد هذه الأدوات في البحث وإعداد الدراسات، لكنها لا تغني عن القراءة والتحقق من المصادر الأصلية. بعض الخدمات مدفوعة أو تتطلب حساباً جامعياً. قد تخطئ أدوات الذكاء الاصطناعي؛ تحقق دائماً من المراجع والبيانات. نزّل Office من موقع Microsoft الرسمي باستخدام حساب يملك ترخيصاً صالحاً.";
+$("foot").textContent=lang==="so"?"Adiga ayaa samaynaya, NIBRAAS ayaa ku hagaya.":"أنت تنجز البحث، ونبراس ترشدك.";render();}
+$("search").addEventListener("input",render);$("category").addEventListener("change",render);$("lang").addEventListener("click",()=>{lang=lang==="so"?"ar":"so";setup()});setup();
+</script></body></html>
