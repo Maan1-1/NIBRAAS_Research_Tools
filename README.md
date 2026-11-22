@@ -2,6 +2,8 @@
 
 Boggan wuxuu ururiyaa agabka cilmi-baarista, tixraacyada, qorista iyo falanqaynta xogta.
 
+Bogga tooska ah: https://maan1-1.github.io/NIBRAAS_Research_Tools/
+
 ## Daabacaadda
 
 Boggu wuxuu ku daabacmaa GitHub Pages marka isbeddel lagu riixo laanta `main`.
